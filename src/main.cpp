@@ -54,7 +54,7 @@ void potentiometer_button_control() {
         }
         motor_1.setTargetSpeed(targetSpeed);
         Serial.printf("^^^ %f\n", motor_1.currentSpeed());
-        motor_1.bezcelerate(startTime);
+        // motor_1.bezcelerate(startTime);
     } else {
         digitalWrite(LED_PIN, LOW);
         if (buttonHeld) {
@@ -65,7 +65,7 @@ void potentiometer_button_control() {
         }
         motor_1.setTargetSpeed(0);
         Serial.printf("vvv %f\n", motor_1.currentSpeed());
-        motor_1.bezcelerate(releaseTime);
+        // motor_1.bezcelerate(releaseTime);
     }
 }
 
@@ -74,7 +74,7 @@ void angle_homing() {
     bool buttonPressed = digitalRead(BUTTON_PIN) == LOW;
     if (event_happening) {
         digitalWrite(LED_PIN, HIGH);
-        motor_1.moveBy(360, startTime);
+        motor_1.moveToAngle(360, startTime);
     } else {
         digitalWrite(LED_PIN, LOW);
     }
